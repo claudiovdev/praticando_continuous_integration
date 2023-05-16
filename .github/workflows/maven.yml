@@ -60,7 +60,7 @@ jobs:
 
         - name: Realizar rollback
           run: |
-           git revert $COMMIT_SHA
+           git reset $COMMIT_SHA
           
           # Coloque os comandos de rollback aqui
           # Por exemplo:
