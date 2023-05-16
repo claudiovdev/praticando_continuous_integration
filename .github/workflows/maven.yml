@@ -42,3 +42,26 @@ jobs:
       run: |
         echo "Erro: O build falhou. O commit será cancelado."
         exit 1
+        
+  rollback:
+      runs-on: ubuntu-latest
+      if: ${{ failure() }}
+      needs: build
+      steps:
+        - name: Checkout código
+          uses: actions/checkout@v2
+          with:
+            ref: ${{ github.sha }}
+
+        - name: Obter commit anterior
+          run: |
+           COMMIT_SHA=$(git log --pretty=format:%H --skip=1 -n 1)
+           echo "Commit anterior: $COMMIT_SHA"
+
+        - name: Realizar rollback
+          run: |
+           git revert $COMMIT_SHA
+          
+          # Coloque os comandos de rollback aqui
+          # Por exemplo:
+          # git revert <commit_sha>
