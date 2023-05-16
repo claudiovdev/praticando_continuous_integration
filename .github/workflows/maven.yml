@@ -53,10 +53,10 @@ jobs:
           with:
             ref: ${{ github.sha }}
 
-        - name: Obter commit atual
+        - name: Obter commit anterior
           run: |
-            COMMIT_SHA=$(git rev-parse HEAD)
-            echo "Commit atual: $COMMIT_SHA"
+           COMMIT_SHA=$(git log --pretty=format:%H --skip=1 -n 1)
+           echo "Commit anterior: $COMMIT_SHA"
 
         - name: Realizar rollback
           run: |
