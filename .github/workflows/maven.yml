@@ -53,9 +53,14 @@ jobs:
           with:
             ref: ${{ github.sha }}
 
+        - name: Obter commit atual
+          run: |
+            COMMIT_SHA=$(git rev-parse HEAD)
+            echo "Commit atual: $COMMIT_SHA"
+
         - name: Realizar rollback
           run: |
-           git revert <commit_sha>
+           git revert $COMMIT_SHA
           
           # Coloque os comandos de rollback aqui
           # Por exemplo:
