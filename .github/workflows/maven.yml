@@ -36,3 +36,9 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+    - name: Verificar status do build
+      if: ${{ failure() }}
+      run: |
+        echo "Erro: O build falhou. O commit será cancelado."
+        exit 1
