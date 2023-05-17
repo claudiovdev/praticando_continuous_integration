@@ -47,7 +47,5 @@ jobs:
         echo "Erro: O build falhou."
         exit 1
         
-  docker:
-     needs: build
-     uses: ./.github/workflows/Docker.yml
+  
    
