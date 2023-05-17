@@ -12,6 +12,7 @@ on:
   push:
     branches: 
      - dev
+     - producao
   pull_request:
     branches: 
      - dev
