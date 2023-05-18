@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: maven
 
 on:
   push:
@@ -47,6 +47,7 @@ jobs:
         
   docker:
     needs: build
-    uses: ./.github/workflows/Docker.yml    
+    uses: ./.github/workflows/Docker.yml
+    secrets: inherit
   
    
