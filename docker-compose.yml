@@ -21,6 +21,14 @@ services:
       - db
     ports:
       - 8000:80
+
+  minha-api:
+    image: viniciuscfn/api-azure:latest
+    networks:
+      - clientes-compose-network
+    ports:
+      - "8080:8080"
+
 volumes:
   dbdata:
 
